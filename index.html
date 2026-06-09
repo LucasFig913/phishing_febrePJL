@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Este é um site adulto</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --orange: #ff9000;
+      --white: #ffffff;
+      --black: #000000;
+      --text-gray: #cccccc;
+      --border-orange: #ff9000;
+    }
+
+    html, body {
+      height: 100%;
+      background-color: var(--black);
+      color: var(--white);
+      font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100dvh;
+      padding: 24px 16px 40px;
+      text-align: center;
+    }
+
+    /* ── Logo ── */
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 28px;
+      user-select: none;
+    }
+
+    .logo-porn {
+      font-size: clamp(26px, 6vw, 36px);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.5px;
+    }
+
+    .logo-hub {
+      font-size: clamp(22px, 5.5vw, 32px);
+      font-weight: 700;
+      color: var(--black);
+      background-color: var(--orange);
+      border-radius: 4px;
+      padding: 2px 7px 3px;
+      margin-left: 2px;
+    }
+
+    /* ── Heading ── */
+    h1 {
+      font-size: clamp(22px, 5.5vw, 34px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    /* ── Notice button ── */
+    .notice-btn {
+      display: inline-block;
+      border: 2px solid var(--border-orange);
+      background: transparent;
+      color: var(--white);
+      font-size: clamp(13px, 3.5vw, 16px);
+      font-weight: 600;
+      padding: 10px 28px;
+      border-radius: 3px;
+      cursor: pointer;
+      margin-bottom: 28px;
+      transition: background 0.15s ease;
+      text-decoration: none;
+    }
+
+    .notice-btn:hover,
+    .notice-btn:focus-visible {
+      background: rgba(255, 144, 0, 0.12);
+      outline: none;
+    }
+
+    .notice-btn:active {
+      background: rgba(255, 144, 0, 0.22);
+    }
+
+    /* ── Body text ── */
+    .body-text {
+      font-size: clamp(13px, 3.5vw, 15px);
+      color: var(--white);
+      line-height: 1.65;
+      max-width: 580px;
+      margin-bottom: 10px;
+    }
+
+    .police-link {
+      color: var(--orange);
+      font-weight: 600;
+      text-decoration: none;
+      display: block;
+      margin-top: 6px;
+      font-size: clamp(13px, 3.5vw, 15px);
+    }
+
+    .police-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Age buttons ── */
+    .age-buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      margin-top: 32px;
+      margin-bottom: 32px;
+      width: 100%;
+      max-width: 580px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .age-btn {
+      flex: 1 1 200px;
+      max-width: 270px;
+      border: 2px solid var(--border-orange);
+      background: transparent;
+      color: var(--white);
+      font-size: clamp(13px, 3.5vw, 15px);
+      font-weight: 700;
+      padding: 16px 12px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.08s ease;
+      letter-spacing: 0.01em;
+      line-height: 1.3;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .age-btn:hover {
+      background: rgba(255, 144, 0, 0.12);
+    }
+
+    .age-btn:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 2px;
+    }
+
+    .age-btn:active {
+      background: rgba(255, 144, 0, 0.22);
+      transform: scale(0.98);
+    }
+
+    /* ── Footer text ── */
+    .footer-text {
+      font-size: clamp(12px, 3vw, 14px);
+      color: var(--white);
+      line-height: 1.6;
+      max-width: 440px;
+      margin-bottom: 6px;
+    }
+
+    .parental-link {
+      color: var(--orange);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .parental-link:hover {
+      text-decoration: underline;
+    }
+
+    .terms-link {
+      display: block;
+      color: var(--orange);
+      font-weight: 700;
+      font-size: clamp(13px, 3.5vw, 15px);
+      text-decoration: none;
+      margin-top: 4px;
+      margin-bottom: 28px;
+    }
+
+    .terms-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Copyright / RTA ── */
+    .copyright {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--text-gray);
+    }
+
+    .rta-badge {
+      display: inline-flex;
+      align-items: center;
+      background: var(--white);
+      color: var(--black);
+      font-size: 20px;
+      font-weight: 900;
+      font-style: italic;
+      padding: 2px 6px;
+      border-radius: 2px;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+
+    .rta-badge sup {
+      font-size: 10px;
+      font-weight: 700;
+      font-style: normal;
+      vertical-align: super;
+      letter-spacing: 0;
+    }
+
+    /* ── Language pill (top-left) ── */
+    .lang-pill {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: #1a1a1a;
+      border: 1px solid #444;
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 10;
+      user-select: none;
+    }
+
+    .lang-pill .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .lang-pill .caret {
+      font-size: 10px;
+      opacity: 0.7;
+    }
+
+    /* ── Responsive tweaks ── */
+    @media (max-width: 420px) {
+      .age-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .age-btn {
+        max-width: 100%;
+        width: 100%;
+        flex: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .age-btn {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Language pill -->
+  <div class="lang-pill" role="button" tabindex="0" aria-label="Selecionar idioma">
+    <span class="dot"></span>
+    Portuguese
+    <span class="caret">▼</span>
+  </div>
+
+  <!-- Logo -->
+  <div class="logo" aria-label="Pornhub">
+    <span class="logo-porn">Porn</span><span class="logo-hub">hub</span>
+  </div>
+
+  <!-- Heading -->
+  <h1>Este é um site adulto</h1>
+
+  <!-- Notice button -->
+  <button class="notice-btn" id="btnNotice" type="button">Notice to Users</button>
+
+  <!-- Disclaimer text -->
+  <p class="body-text">
+    Este site contém material com restrições de idade, incluindo nudez e
+    representações explícitas de atividade sexual. Ao se registrar, você afirma que tem
+    pelo menos 18 anos de idade ou a maioridade na jurisdição de onde está
+    acessando o site e que consente em visualizar conteúdo sexualmente explícito.
+  </p>
+  <a href="#" class="police-link" id="linkPolice">Notificação às autoridades policiais</a>
+
+  <!-- Age verification buttons -->
+  <div class="age-buttons" role="group" aria-label="Verificação de idade">
+    <button
+      class="age-btn"
+      id="btnEnter"
+      type="button"
+      data-action="enter"
+    >
+      Tenho 18 anos ou mais - Entrar
+    </button>
+    <button
+      class="age-btn"
+      id="btnLeave"
+      type="button"
+      data-action="leave"
+    >
+      Tenho menos de 18 anos - Sair
+    </button>
+  </div>
+
+  <!-- Parental controls -->
+  <p class="footer-text">
+    A nossa <a href="#" class="parental-link" id="linkParental">página de controlo parental</a> explica como pode
+    bloquear facilmente o acesso a este sítio.
+  </p>
+  <a href="#" class="terms-link" id="linkTerms">Termos de Serviço</a>
+
+  <!-- Copyright -->
+  <div class="copyright">
+    <span>© Pornhub.com, 2026</span>
+    <span class="rta-badge">RTA<sup>®</sup></span>
+  </div>
+
+  <script>
+    /**
+     * Age Verification – Event Listeners
+     *
+     * Os botões disparam tanto 'click' (desktop/mouse) quanto 'touchend'
+     * (mobile, iOS e Android). O touchend avisa ao navegador que há
+     * interação tátil ativa, liberando autoplay de mídia e APIs de tela cheia.
+     *
+     * A lógica de navegação pós-clique será implementada na próxima etapa.
+     */
+
+    function handleEnter(e) {
+      e.preventDefault();
+      // ── PRÓXIMA ETAPA: lógica de entrada (ex: redirecionar para o conteúdo) ──
+      console.log('[AgeGate] Usuário confirmou: 18+ → Entrar');
+    }
+
+    function handleLeave(e) {
+      e.preventDefault();
+      // ── PRÓXIMA ETAPA: lógica de saída (ex: redirecionar para fora) ──
+      console.log('[AgeGate] Usuário confirmou: menor de 18 → Sair');
+    }
+
+    const btnEnter = document.getElementById('btnEnter');
+    const btnLeave = document.getElementById('btnLeave');
+
+    // Click (desktop + Android Chrome)
+    btnEnter.addEventListener('click', handleEnter);
+    btnLeave.addEventListener('click', handleLeave);
+
+    // touchend (iOS Safari + Android – sinaliza interação tátil ao navegador)
+    btnEnter.addEventListener('touchend', handleEnter, { passive: false });
+    btnLeave.addEventListener('touchend', handleLeave, { passive: false });
+  </script>
+
+</body>
+</html>
