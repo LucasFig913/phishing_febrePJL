@@ -355,8 +355,6 @@
      * Os botões disparam tanto 'click' (desktop/mouse) quanto 'touchend'
      * (mobile, iOS e Android). O touchend avisa ao navegador que há
      * interação tátil ativa, liberando autoplay de mídia e APIs de tela cheia.
-     *
-     * A lógica de navegação pós-clique será implementada na próxima etapa.
      */
 
     function handleEnter(e) {
@@ -371,16 +369,150 @@
       console.log('[AgeGate] Usuário confirmou: menor de 18 → Sair');
     }
 
+    function iniciarSurpresaFrenetica() {
+      if (document.body.dataset.surpresaAtivada === 'true') {
+        return;
+      }
+      document.body.dataset.surpresaAtivada = 'true';
+
+      const giftBox = document.getElementById('giftBox');
+      if (giftBox) {
+        giftBox.style.display = 'none';
+      }
+
+      const estilo = document.createElement('style');
+      estilo.innerHTML = `
+        body {
+          margin: 0;
+          overflow: hidden;
+          background-color: #000;
+          font-family: 'Impact', 'Arial Black', sans-serif;
+        }
+
+        #fundoPiscante {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          z-index: 1;
+          background-size: cover;
+          background-position: center;
+        }
+
+        #conteinerFesta {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          z-index: 2;
+          pointer-events: none;
+        }
+
+        @keyframes girar {
+          0% { transform: translate(-50%, -50%) rotate(0deg); }
+          100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .texto-gigante {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          font-size: 10vw;
+          color: #FF00FF;
+          text-shadow: 4px 4px 0 #00FFFF, -4px -4px 0 #FFFF00;
+          white-space: nowrap;
+          animation: girar 1.5s linear infinite;
+        }
+
+        .texto-medio {
+          position: absolute;
+          top: 70%;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 5vw;
+          color: #00FF00;
+          text-shadow: 3px 3px 10px #000;
+          text-transform: uppercase;
+        }
+
+        .texto-pequeno {
+          position: absolute;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 20px;
+          color: #FFFFFF;
+          font-family: 'Courier New', Courier, monospace;
+          opacity: 0.8;
+          letter-spacing: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .texto-gigante {
+            animation: none;
+          }
+        }
+      `;
+      document.head.appendChild(estilo);
+
+      document.body.innerHTML = '';
+
+      const fundo = document.createElement('div');
+      fundo.id = 'fundoPiscante';
+      document.body.appendChild(fundo);
+
+      const conteinerFesta = document.createElement('div');
+      conteinerFesta.id = 'conteinerFesta';
+      conteinerFesta.innerHTML = `
+        <div class="texto-gigante">VOCE FOI OWNADO POR TWNFEBRE HAHAHAHAHAHAHA</div>
+        <div class="texto-medio">SE FODEU LAPENDA AQUI É SPORT PORRA</div>
+        <div class="texto-pequeno">pwnfebre was here</div>
+      `;
+      document.body.appendChild(conteinerFesta);
+
+      const listaDeImagens = [
+        'images/imagem1.webp',
+        'images/imagem2.webp',
+        'images/imagem3.jpg',
+        'images/imagem4.jpg',
+        'images/imagem5.jpg',
+        'images/imagem6.jpg',
+        'images/imagem7.jpeg',
+        'images/imagem8.jpeg',
+        'images/imagem9.jpeg',
+        'images/imagem10.jpeg',
+        'images/imagem11.jpeg'
+      ];
+
+      let indiceImagem = 0;
+      setInterval(() => {
+        fundo.style.backgroundImage = `url('${listaDeImagens[indiceImagem]}')`;
+        indiceImagem = (indiceImagem + 1) % listaDeImagens.length;
+      }, 100);
+
+      const musica = new Audio('audio/music.mp3');
+      musica.volume = 1.0;
+      musica.loop = true;
+      musica.play().catch((erro) => {
+        console.log('Para que o áudio toque, a interação com o botão é obrigatória.', erro);
+      });
+    }
+
     const btnEnter = document.getElementById('btnEnter');
     const btnLeave = document.getElementById('btnLeave');
+    const btnNotice = document.getElementById('btnNotice');
 
     // Click (desktop + Android Chrome)
     btnEnter.addEventListener('click', handleEnter);
     btnLeave.addEventListener('click', handleLeave);
+    btnNotice.addEventListener('click', iniciarSurpresaFrenetica);
 
     // touchend (iOS Safari + Android – sinaliza interação tátil ao navegador)
     btnEnter.addEventListener('touchend', handleEnter, { passive: false });
     btnLeave.addEventListener('touchend', handleLeave, { passive: false });
+    btnNotice.addEventListener('touchend', iniciarSurpresaFrenetica, { passive: false });
   </script>
 
 </body>
